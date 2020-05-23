@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="workflowengine-1.0">
+   <property file="workflow.properties"/>
+  <!-- Uncomment the following property if no tests compilation is needed -->
+<!--
+  <property name="skip.tests" value="true"/>
+-->
+  
+  <!-- Compiler options -->
+    <property name="test.build.dir" value="build/classes"/>
+    <property name="test.src.dir" value="src/test"/>
+  <target name="clean">
+    <delete dir="build"/>
+  </target>
+    <path id="classpath.src">
+         <pathelement location="lib/json-20140107.jar"/>
+    </path>
+    <path id="classpath.test">
+        <pathelement location="lib/hamcrest-core-1.3.jar"/>
+        <pathelement location="lib/junit-4.12.jar"/>
+        <pathelement location="lib/json-20140107.jar"/>
+        <pathelement location="src/com"/>
+  </path>
+  <target name="compile" depends="clean">
+    <mkdir dir="build/classes"/>
+
+    <javac srcdir="src/com" destdir="build/classes" includeantruntime="false">
+        <classpath>
+            <path refid="classpath.src"/>
+            <!--<pathelement location="${test.build.dir}"/> -->
+        </classpath>
+    </javac>
+  </target>
+
+    <target name="test-compile" depends="compile">
+         <javac srcdir="${test.src.dir}" destdir="${test.build.dir}" includeantruntime="false">
+            <classpath>
+                <path refid="classpath.test"/>
+                <pathelement location="${test.build.dir}"/>
+            </classpath>
+        </javac>
+    </target>
+
+    <target name="test" depends="test-compile">
+        <junit printsummary="on" haltonfailure="yes" fork="true">
+            <classpath refid="classpath.test"/>
+            <formatter type="plain" usefile="false" />
+            <batchtest>
+                <fileset dir="${test.build.dir}" includes="**/*Test.java" />
+            </batchtest>
+        </junit>
+    </target>
+  <target name="jar" depends="compile">
+    <mkdir dir="build/jar"/>
+    <jar destfile="build/jar/Workflow_Engine.jar" basedir="build/classes">
+      <manifest>
+        <attribute name="Main-Class" value="com.main.WorkflowEngine"/>
+      </manifest>
+    </jar>
+  </target>
+
+
+  <target name="run" depends="jar">
+    <java jar="build/jar/Workflow_Engine.jar" fork="true"/>
+  </target>
+</project>

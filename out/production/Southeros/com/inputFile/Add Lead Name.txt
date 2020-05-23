@@ -1,0 +1,7 @@
+{
+"name": "Add Lead Name",
+"config":  {
+		"firstName": "Mahesh",
+        "lastName":  "Sony"
+	}
+}

@@ -1,0 +1,8 @@
+{
+	"name": "workflow name 1",
+	"connections": {
+		"0": ["Add Lead Name"],
+		"1": ["Add Lead Description"],
+		"2": ["Add Lead Country"]
+	}
+}
