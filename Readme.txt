@@ -1,7 +1,5 @@
-In order to run this application execute the command
-ant run
-In order to run the unit tests execute the command
-ant test
+In order to run this application run the main file
+WorkFlowEngine.java in com.main package
 
 The application takes input from the files kept in the path src/com/inputFile
 
