@@ -3,6 +3,7 @@
 	"connections": {
 		"0": ["Add Lead Name"],
 		"1": ["Add Lead Description"],
-		"2": ["Add Lead Country"]
+		"2": ["Add Lead Country"],
+		"3": ["Add Lead Address"]
 	}
 }

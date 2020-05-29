@@ -25,28 +25,18 @@ public class WorkFlowImpl implements WorkFlow {
         workFlowName = jsonObject.getString("name");
 
         JSONObject conObj = jsonObject.getJSONObject("connections");
-        JSONArray comArr1 = conObj.getJSONArray("0");
+//
         components = new ArrayList<>();
+        for(int i1=0; i1 <= WorkFlowSequence.maxWorkFlowState; i1++){
+            JSONArray comArr1 = conObj.getJSONArray("" + i1);
+
         String[] com1 = new String[comArr1.length()];
         for(int i=0; i < comArr1.length(); i++){
             com1[i] = comArr1.getString(i);
 
         }
         components.add(com1);
-        JSONArray comArr2 = conObj.getJSONArray("1");
-        String[] com2 = new String[comArr2.length()];
-        for(int i=0; i < comArr2.length(); i++){
-            com2[i] = comArr2.getString(i);
-
         }
-        components.add(com2);
-        JSONArray comArr3 = conObj.getJSONArray("2");
-        String[] com3 = new String[comArr3.length()];
-        for(int i=0; i < comArr3.length(); i++){
-            com3[i] = comArr3.getString(i);
-        }
-        components.add(com3);
-
         return components;
     }
 

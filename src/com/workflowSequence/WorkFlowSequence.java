@@ -17,7 +17,7 @@ import java.util.Scanner;
 
 public class WorkFlowSequence {
    static String workFlowState = "0";
-    public static int maxWorkFlowState = 2;
+    public static int maxWorkFlowState = 3;
     static int cnt=0;
     boolean b1=false;
 
